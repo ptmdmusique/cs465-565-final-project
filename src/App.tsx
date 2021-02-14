@@ -1,7 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import logo from "./logo.svg";
+import { Header } from "components/Header";
 import firebase from "firebase/app";
+import { EditingPage } from "pages/EditingPage";
+import { GeneratingPage } from "pages/GeneratingPage";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import "styles/App.css";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAu48AzSCNeIxovMLOrf9KIwbta2kh47MY",
@@ -17,20 +26,23 @@ firebase.initializeApp(firebaseConfig);
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <Router>
+        <Switch>
+          <Route path="/generate">
+            <GeneratingPage />
+          </Route>
+
+          <Route path="/edit">
+            <EditingPage />
+          </Route>
+
+          <Route path="/">
+            <Redirect to="/generate" />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
