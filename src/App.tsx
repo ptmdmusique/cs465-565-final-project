@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import logo from "./logo.svg";
 import firebase from "firebase/app";
+import getClass from '../src/data/helpers/helpers.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAu48AzSCNeIxovMLOrf9KIwbta2kh47MY",
@@ -15,6 +16,14 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function App() {
+
+  // TODO: mccoy - to be removed. Just to see objects created from mapper function
+  var adept = getClass.getAdept();
+  var barbarian = getClass.getBarbarian();
+  var aristocrat = getClass.getAristocrat();
+  var bard = getClass.getBard();
+  ////////////////////////////////////////////////////////////////////////////////
+
   return (
     <div className="App">
       <header className="App-header">
