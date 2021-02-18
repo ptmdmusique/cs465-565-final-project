@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import logo from "./logo.svg";
 import firebase from "firebase/app";
-import getClass from '../src/data/helpers/helpers.js';
+import getClass from './data/helpers/classHelper.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAu48AzSCNeIxovMLOrf9KIwbta2kh47MY",
@@ -18,10 +18,25 @@ firebase.initializeApp(firebaseConfig);
 function App() {
 
   // TODO: mccoy - to be removed. Just to see objects created from mapper function
-  var adept = getClass.getAdept();
-  var barbarian = getClass.getBarbarian();
-  var aristocrat = getClass.getAristocrat();
-  var bard = getClass.getBard();
+  const randomScore = Math.floor(Math.random()*100)+1;// 1 to 100
+  const npcClass = getClass.getClass('good', randomScore);
+  console.log('npc class: ' + npcClass);
+  const adept = getClass.getAdept();
+  const barbarian = getClass.getBarbarian();
+  const aristocrat = getClass.getAristocrat();
+  const bard = getClass.getBard();
+  const cleric = getClass.getCleric();
+  const commoner = getClass.getCommoner();
+  const druid = getClass.getDruid();
+  const expert = getClass.getExpert();
+  const fighter = getClass.getFighter();
+  const monk = getClass.getMonk();
+  const paladin = getClass.getPaladin();
+  const ranger = getClass.getRanger();
+  const rogue = getClass.getRogue();
+  const sorcerer = getClass.getSorcerer();
+  const warrior = getClass.getWarrior();
+  const wizard = getClass.getWizard();
   ////////////////////////////////////////////////////////////////////////////////
 
   return (
