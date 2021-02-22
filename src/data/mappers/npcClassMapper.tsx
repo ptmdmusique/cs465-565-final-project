@@ -1,4 +1,25 @@
-const npcClassMapper = {
+export const mapperClassList = [
+  "class",
+  "adept",
+  "aristocrat",
+  "barbarian",
+  "bard",
+  "cleric",
+  "commoner",
+  "druid",
+  "expert",
+  "fighter",
+  "monk",
+  "paladin",
+  "ranger",
+  "rogue",
+  "sorcerer",
+  "warrior",
+  "wizard",
+] as const;
+export type DnDClass = typeof mapperClassList[number];
+
+const npcClassMapper: Record<DnDClass, string> = {
   class:
     "good,neutral,evil,class." +
     "1-5,1-5,1-10,barbarian." +
@@ -364,6 +385,6 @@ const npcClassMapper = {
     "18,65,23,10,13,7,9,12,189,10,10,16,13,25,12,8,4." +
     "19,68,23,10,13,7,9,12,198,10,10,16,13,25,12,8,4." +
     "20,72,23,11,14,7,9,13,230,11,10,16,13,26,12,8,4",
-};
+} as const;
 
 export default npcClassMapper;
