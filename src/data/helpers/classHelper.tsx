@@ -1,4 +1,5 @@
-import npcClassMapper, { DnDClass } from "data/mappers/npcClassMapper";
+import npcClassMapper from "data/mappers/npcClassMapper";
+import { Alignment, DnDClass } from "data/model/dndModel";
 import inRange from "./helpers";
 
 // for each property of the returned object that is an array,
@@ -35,7 +36,7 @@ const getClass = {
   // alignments: good, neutral, or evil
   // score: 1 inclusive to 100 inclusive
   // returns a class given the alignment and score
-  getClass: (alignment: string, score: number) => {
+  getClass: (alignment: Alignment, score: number): DnDClass => {
     const classObject = getMappedClass("class");
     let returnClass = "";
 
@@ -46,7 +47,7 @@ const getClass = {
         returnClass = classObject.class[i];
       }
     });
-    return returnClass;
+    return returnClass as DnDClass;
   },
   getAdept: () => {
     return getMappedClass("adept");
@@ -96,6 +97,7 @@ const getClass = {
   getWizard: () => {
     return getMappedClass("wizard");
   },
+  generateDnDClass: (className: DnDClass) => getMappedClass(className),
 };
 
 export default getClass;
