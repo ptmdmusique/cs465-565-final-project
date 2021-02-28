@@ -1,20 +1,21 @@
 export const mapperClassList = [
   "class",
-  "adept",
-  "aristocrat",
+  /* "adept", */
+  /* "aristocrat", */
   "barbarian",
   "bard",
   "cleric",
-  "commoner",
+  /* "commoner", */
   "druid",
-  "expert",
+  /* "expert", */
   "fighter",
   "monk",
   "paladin",
   "ranger",
   "rogue",
   "sorcerer",
-  "warrior",
+  "warlock",
+  /* "warrior", */
   "wizard",
 ] as const;
 export type DnDClass = typeof mapperClassList[number];
