@@ -49,12 +49,12 @@ const getClass = {
     });
     return returnClass as DnDClass;
   },
-  getAdept: () => {
+  /* getAdept: () => {
     return getMappedClass("adept");
   },
   getAristocrat: () => {
     return getMappedClass("aristocrat");
-  },
+  }, */
   getBarbarian: () => {
     return getMappedClass("barbarian");
   },
@@ -64,15 +64,15 @@ const getClass = {
   getCleric: () => {
     return getMappedClass("cleric");
   },
-  getCommoner: () => {
+  /* getCommoner: () => {
     return getMappedClass("commoner");
-  },
+  }, */
   getDruid: () => {
     return getMappedClass("druid");
   },
-  getExpert: () => {
+  /* getExpert: () => {
     return getMappedClass("expert");
-  },
+  }, */
   getFighter: () => {
     return getMappedClass("fighter");
   },
@@ -91,9 +91,12 @@ const getClass = {
   getSorcerer: () => {
     return getMappedClass("sorcerer");
   },
-  getWarrior: () => {
-    return getMappedClass("warrior");
+  getWarlock: () => {
+    return getMappedClass("warlock");
   },
+  /* getWarrior: () => {
+    return getMappedClass("warrior");
+  }, */
   getWizard: () => {
     return getMappedClass("wizard");
   },
