@@ -3,12 +3,13 @@ import getClass from "data/helpers/classHelper";
 import { Collection } from '../../data/model/commonModels';
 import { alignmentList, DnDClass } from "data/model/dndModel";
 import { Race } from '../../data/model/raceModel';
+import { Class } from '../../data/model/classModel';
 import { action, Action, thunk, Thunk } from "easy-peasy";
 
 export interface APIModel {
   classStat: Record<string, any> | null;
-  classes: Record<string, any> | null;
-  class: Record<string, any> | null;
+  classes: Collection | null;
+  class: Class | null;
   abilities:Collection | null;
   races: Collection | null;
   race: Race | null;
@@ -22,8 +23,8 @@ export interface APIModel {
   generateRace: Thunk<APIModel, string>;
   generateAllEquipment: Thunk<APIModel>;
 
-  setClasses: Action<APIModel, any>;
-  setClass: Action<APIModel, any>;
+  setClasses: Action<APIModel, Collection>;
+  setClass: Action<APIModel, Class>;
   setAbilities: Action<APIModel,Collection>;
   setRaces: Action<APIModel, Collection>;
   setRace: Action<APIModel, Race>;
