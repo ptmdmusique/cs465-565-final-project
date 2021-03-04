@@ -1,16 +1,18 @@
 import axios from "axios";
 import getClass from "data/helpers/classHelper";
+import { Collection } from '../../data/model/commonModels';
 import { alignmentList, DnDClass } from "data/model/dndModel";
+import { Race } from '../../data/model/raceModel';
 import { action, Action, thunk, Thunk } from "easy-peasy";
 
 export interface APIModel {
   classStat: Record<string, any> | null;
   classes: Record<string, any> | null;
   class: Record<string, any> | null;
-  abilities: Record<string, any> | null;
-  races: Record<string, any> | null;
-  race: Record<string, any> | null;
-  allEquipment: Record<string, any> | null;
+  abilities:Collection | null;
+  races: Collection | null;
+  race: Race | null;
+  allEquipment: Collection | null;
 
   generateDndClass: Action<APIModel, DnDClass>;
   generateClasses: Thunk<APIModel>;
@@ -22,10 +24,10 @@ export interface APIModel {
 
   setClasses: Action<APIModel, any>;
   setClass: Action<APIModel, any>;
-  setAbilities: Action<APIModel, any>;
-  setRaces: Action<APIModel, any>;
-  setRace: Action<APIModel, any>;
-  setAllEquipment: Action<APIModel, any>;
+  setAbilities: Action<APIModel,Collection>;
+  setRaces: Action<APIModel, Collection>;
+  setRace: Action<APIModel, Race>;
+  setAllEquipment: Action<APIModel, Collection>;
 }
 
 export const api: APIModel = {
