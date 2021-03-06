@@ -1,22 +1,34 @@
 import axios from "axios";
 import getClass from "data/helpers/classHelper";
+import { Collection } from '../../data/model/commonModels';
 import { alignmentList, DnDClass } from "data/model/dndModel";
+import { Race } from '../../data/model/raceModel';
+import { Class } from '../../data/model/classModel';
 import { action, Action, thunk, Thunk } from "easy-peasy";
 
 export interface APIModel {
   classStat: Record<string, any> | null;
-  classes: Record<string, any> | null;
-  class: Record<string, any> | null;
-  abilities: Record<string, any> | null;
+  classes: Collection | null;
+  class: Class | null;
+  abilities:Collection | null;
+  races: Collection | null;
+  race: Race | null;
+  allEquipment: Collection | null;
 
   generateDndClass: Action<APIModel, DnDClass>;
   generateClasses: Thunk<APIModel>;
   generateClass: Thunk<APIModel, string>;
   generateAbilities: Thunk<APIModel>;
+  generateRaces: Thunk<APIModel>;
+  generateRace: Thunk<APIModel, string>;
+  generateAllEquipment: Thunk<APIModel>;
 
-  setClasses: Action<APIModel, any>;
-  setClass: Action<APIModel, any>;
-  setAbilities: Action<APIModel, any>;
+  setClasses: Action<APIModel, Collection>;
+  setClass: Action<APIModel, Class>;
+  setAbilities: Action<APIModel,Collection>;
+  setRaces: Action<APIModel, Collection>;
+  setRace: Action<APIModel, Race>;
+  setAllEquipment: Action<APIModel, Collection>;
 }
 
 export const api: APIModel = {
@@ -24,6 +36,9 @@ export const api: APIModel = {
   classes: null,
   class: null,
   abilities: null,
+  races: null,
+  race: null,
+  allEquipment: null,
 
   generateDndClass: action((state, className) => {
     let classToGenerate = className;
@@ -55,6 +70,21 @@ export const api: APIModel = {
     actions.setAbilities(data);
   }),
 
+  generateRaces: thunk(async (actions) => {
+    const { data } = await axios.get(dndAPISrc + "races/");
+    actions.setRaces(data);
+  }),
+
+  generateRace: thunk(async (actions, payload) => {
+    const { data } = await axios.get(dndAPISrc + "races/" + payload + "/");
+    actions.setRace(data);
+  }),
+
+  generateAllEquipment: thunk(async (actions) => {
+    const { data } = await axios.get(dndAPISrc + "equipment/");
+    actions.setAllEquipment(data);
+  }),
+
   setClasses: action((state, dndClasses) => {
     state.classes = dndClasses;
   }),
@@ -65,6 +95,18 @@ export const api: APIModel = {
 
   setAbilities: action((state, abilities) => {
     state.abilities = abilities;
+  }),
+
+  setRaces: action((state, races) => {
+    state.races = races;
+  }),
+
+  setRace: action((state, race) => {
+    state.race = race;
+  }),
+  
+  setAllEquipment: action((state, equipment) => {
+    state.allEquipment = equipment;
   }),
 };
 
