@@ -12,12 +12,12 @@ export const EditingPage = () => {
 
   const { register, handleSubmit } = useForm<FormField>();
 
-  const { editDndClass } = useStoreActions((actions) => actions.api);
+  //const { editDndClass } = useStoreActions((actions) => actions.api);
   const classStat = useStoreState((state) => state.api.classStat);
 
-  const editOnSubmit = handleSubmit((data) => {
-    editDndClass(data.classToEdit);
-  });
+  //const editOnSubmit = handleSubmit((data) => {
+  //  editDndClass(data.classToEdit);
+  //});
 
   return (
     //<div>Page to edit generated character</div>
@@ -25,7 +25,7 @@ export const EditingPage = () => {
     <Container className="mt-4">
     <h4>Character Editing</h4>
 
-    <Form onSubmit={editOnSubmit}>
+    <Form>
       <Form.Group controlId="exampleForm.ControlSelect1">
         <Form.Label>Choose a character class to generate</Form.Label>
         <Form.Control
@@ -34,11 +34,14 @@ export const EditingPage = () => {
           name="classToEdit"
           ref={register}
         >
-          {mapperClassList.map((dndClass, index) => (
-            <option key={index} className="text-capitalize" value={dndClass}>
-              {dndClass === "class" ? "random" : dndClass}
-            </option>
+
+        {mapperClassList.map((DndClass, index) => (
+          //  <option key={index} className="text-capitalize" value={DndClass}>
+          //    {DndClass === "Bard" ? "Random" : DndClass}
+          //  </option>
+          'pickme'
           ))}
+          
         </Form.Control>
       </Form.Group>
 

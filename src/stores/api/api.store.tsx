@@ -154,7 +154,7 @@ export const api: APIModel = {
   // payload: string name of class
   generateClass: action((state, className) => {
     let classToGenerate = className;
-    if (className === "random") {
+    if (className === "Random") {
       const randomScore = Math.floor(Math.random() * 100) + 1; // 1 to 100
 
       const randomIndex = Math.floor(Math.random() * alignmentList.length);
@@ -173,7 +173,7 @@ export const api: APIModel = {
   generate: thunk(async (actions, { myClass, race }) => {
     await actions.fetchAllRaces();
     actions.generateRace(race || "random"); // generate a random race trait
-    actions.generateClass(myClass || "random"); // generate a random class trait
+    actions.generateClass(myClass || "Random"); // generate a random class trait
     actions.generatePersonalityTraits();
     await actions.generatePeople();
   }),

@@ -1,7 +1,7 @@
 import { DnDClass } from "data/model/dndModel";
 
 const npcClassMapper: Record<DnDClass, string> = {
-  random:
+  Random:
     "good,neutral,evil,class." +
     "1-5,1-5,1-10,barbarian." +
     "6-10,6-10,11-15,bard." +
@@ -59,7 +59,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,13,6,6,11." +
     "19,14,6,6,11." +
     "20,15,6,6,12", */
-  barbarian:
+  Barbarian:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha." +
     "1,13,16,4,3,3,2,1,16,1,15,14,13,10,12,8." +
     "2,20,17,5,5,4,2,1,20,1,15,14,13,10,12,8." +
@@ -81,7 +81,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,158,28,27,24,13,7,6,84,7,20,14,14,10,12,8." +
     "19,166,29,30,26,13,8,6,88,7,24,16,14,10,12,8." +
     "20,175,29,31,27,14,9,7,92,7,25,16,14,10,12,8",
-  bard:
+  Bard:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha,spellsPerDay." +
     "1,7,14,1,2,1,3,1,24,1,10,13,12,14,8,15,2." +
     "2,11,14,2,3,1,4,2,30,1,10,13,12,14,8,15,3." +
@@ -103,7 +103,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,83,23,15,15,7,12,10,126,7,10,13,12,14,8,25,4." +
     "19,88,23,16,16,7,12,10,132,7,10,13,12,14,8,25,4." +
     "20,92,23,17,17,7,13,11,138,7,10,13,12,14,8,26,4",
-  cleric:
+  Cleric:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha,spellsPerDay." +
     "1,10,17,2,-1,4,-1,4,8,1,13,8,14,10,15,12,3." +
     "2,16,18,3,0,5,-1,5,10,1,13,8,14,10,15,12,4." +
@@ -125,7 +125,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,120,26,15,13,13,6,18,42,7,13,10,14,10,25,12,6." +
     "19,127,26,16,14,13,6,18,44,7,13,10,14,10,25,12,6." +
     "20,133,26,17,15,14,6,20,46,7,13,10,14,10,26,12,6.",
-  /* commoner:
+  /* Commoner:
     "npcLevel,baseAttackBonus,fortSave,refSave,willSave." +
     "1,0,0,0,0." +
     "2,1,0,0,0." +
@@ -147,7 +147,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,9,6,6,6." +
     "19,9,6,6,6." +
     "20,10,6,6,6.", */
-  druid:
+  Druid:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha,spellsPerDay." +
     "1,9,17,1,3,3,2,4,20,1,10,14,13,12,15,8,3." +
     "2,14,17,2,4,4,2,5,25,1,10,14,13,12,15,8,4." +
@@ -169,7 +169,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,102,28,15,16,12,8,18,105,7,10,14,13,12,25,8,6." +
     "19,108,28,16,17,12,8,18,110,7,10,14,13,12,25,8,6." +
     "20,113,28,17,18,13,8,20,115,7,10,14,13,12,26,8,6.",
-  /* expert:
+  /* Expert:
     "npcLevel,baseAttackBonus,fortSave,refSave,willSave." +
     "1,0,0,0,2." +
     "2,1,0,0,3." +
@@ -191,7 +191,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,13,6,6,11." +
     "19,14,6,6,11." +
     "20,15,6,6,12", */
-  fighter:
+  Fighter:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha." +
     "1,12,18,4,2,4,1,1,8,2,15,13,14,10,12,8." +
     "2,19,19,5,4,5,1,1,10,3,15,13,14,10,12,8." +
@@ -213,7 +213,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,139,32,27,21,13,7,7,42,17,18,21,14,10,12,8." +
     "19,166,32,30,22,14,7,7,44,17,18,25,16,10,12,8." +
     "20,175,34,32,23,15,7,7,46,18,18,26,16,10,12,8",
-  monk:
+  Monk:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha,unarmedStrike,flurryOfBlows." +
     "1,9,13,3,1,3,3,4,16,2,14,13,12,10,15,8,2,0." +
     "2,14,13,4,3,4,4,5,20,3,14,13,12,10,15,8,3,1." +
@@ -235,7 +235,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,102,28,20,19,12,15,15,84,11,14,18,12,10,18,8,15,15." +
     "19,127,30,22,21,13,16,16,88,11,16,20,14,10,20,8,17,17." +
     "20,133,34,23,23,14,18,18,92,11,16,22,14,10,23,8,18,18",
-  paladin:
+  Paladin:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha,spellsPerDay." +
     "1,11,17,4,0,3,-1,1,8,1,14,8,12,10,13,15,0." +
     "2,17,18,5,2,6,1,3,10,1,14,8,12,10,13,15,0." +
@@ -257,7 +257,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,121,30,25,18,17,10,13,42,7,14,8,12,10,14,20,4." +
     "19,128,30,26,20,19,12,15,44,7,14,8,12,10,14,24,4." +
     "20,134,30,27,21,20,12,15,46,7,14,8,12,10,14,25,4",
-  ranger:
+  Ranger:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha,spellsPerDay." +
     "1,9,15,3,4,3,4,1,24,1,14,15,13,10,12,8,0." +
     "2,15,15,5,5,4,5,1,30,1,14,15,13,10,12,8,0." +
@@ -279,7 +279,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,103,25,25,27,12,17,8,126,7,18,23,13,10,14,8,4." +
     "19,108,25,26,28,12,17,8,132,7,18,23,13,10,14,8,4." +
     "20,114,25,28,31,13,19,8,138,7,18,24,13,10,14,8,4",
-  rogue:
+  Rogue:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha." +
     "1,7,15,2,3,1,4,0,40,1,12,15,13,14,10,8." +
     "2,11,15,3,4,1,5,0,50,1,12,15,13,14,10,8." +
@@ -301,7 +301,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,83,24,16,21,7,17,6,210,7,12,23,13,14,10,8." +
     "19,88,25,18,23,7,18,6,220,7,12,25,13,14,10,8." +
     "20,92,26,19,26,7,20,6,230,7,12,26,13,14,10,8",
-  sorcerer:
+  Sorcerer:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha,spellsPerDay." +
     "1,5,12,-1,3,1,2,3,8,1,8,14,13,10,12,15,5." +
     "2,8,12,0,4,1,2,4,10,1,8,14,13,10,12,15,6." +
@@ -323,7 +323,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,65,22,9,13,7,9,12,42,7,8,16,13,10,12,25,6." +
     "19,68,22,9,13,7,9,12,44,7,8,16,13,10,12,25,6." +
     "20,72,22,10,14,7,9,13,46,7,8,16,13,10,12,26,6",
-  warlock:
+  Warlock:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha,spellsPerDay." +
     "1,5,12,-1,3,1,2,3,8,1,8,14,13,10,12,15,5." +
     "2,8,12,0,4,1,2,4,10,1,8,14,13,10,12,15,6." +
@@ -345,7 +345,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,65,22,9,13,7,9,12,42,7,8,16,13,10,12,25,6." +
     "19,68,22,9,13,7,9,12,44,7,8,16,13,10,12,25,6." +
     "20,72,22,10,14,7,9,13,46,7,8,16,13,10,12,26,6",
-  /* warrior:
+  /* Warrior:
     "npcLevel,baseAttackBonus,fortSave,refSave,willSave." +
     "1,1,2,0,0." +
     "2,2,3,0,0." +
@@ -367,7 +367,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,18,11,6,6." +
     "19,19,11,6,6." +
     "20,20,12,6,6", */
-  wizard:
+  Wizard:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha,spellsPerDay." +
     "1,5,12,0,2,1,2,3,16,1,10,14,13,15,12,8,3." +
     "2,8,12,1,4,1,2,4,20,1,10,14,13,15,12,8,4." +

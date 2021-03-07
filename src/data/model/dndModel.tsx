@@ -1,24 +1,24 @@
 import { Race } from "data/model/raceModel";
 
 export const mapperClassList = [
-  "random",
-  /* "adept", */
-  /* "aristocrat", */
-  "barbarian",
-  "bard",
-  "cleric",
-  /* "commoner", */
-  "druid",
-  /* "expert", */
-  "fighter",
-  "monk",
-  "paladin",
-  "ranger",
-  "rogue",
-  "sorcerer",
-  "warlock",
-  /* "warrior", */
-  "wizard",
+  "Random",
+  /* "Adept", */
+  /* "Aristocrat", */
+  "Barbarian",
+  "Bard",
+  "Cleric",
+  /* "Commoner", */
+  "Druid",
+  /* "Expert", */
+  "Fighter",
+  "Monk",
+  "Paladin",
+  "Ranger",
+  "Rogue",
+  "Sorcerer",
+  "Warlock",
+  /* "Warrior", */
+  "Wizard",
 ] as const;
 export type DnDClass = typeof mapperClassList[number];
 

@@ -26,7 +26,7 @@ const traitMapper = [
   "is bald",
   "has particularly long hair",
   "always has a cigar",
-  "has unusaul hair color",
+  "has unusual hair color",
   "walks with a limp",
   "wears distinctive jewelry",
   "wears outlandish clothes",
