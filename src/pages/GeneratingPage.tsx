@@ -160,23 +160,15 @@ interface FormField {
 export const GeneratingPage = () => {
   const { register, handleSubmit } = useForm<FormField>();
 
-  const {
-    initializeStore,
-    generateRace,
-    setAlignment,
-    generateClass,
-    generatePersonalityTraits,
-  } = useStoreActions((actions) => actions.api);
+  const { initializeStore, generate, setAlignment } = useStoreActions(
+    (actions) => actions.api
+  );
   const races = useStoreState((state) => state.api.races);
   const characterSheet = useStoreState((state) => state.api.characterSheet);
 
   const onSubmit = handleSubmit((data) => {
-    generateRace(data.race);
-
     setAlignment(data.alignment);
-    generateClass(data.class);
-
-    generatePersonalityTraits();
+    generate({ myClass: data.class, race: data.race });
   });
 
   useEffect(() => {
