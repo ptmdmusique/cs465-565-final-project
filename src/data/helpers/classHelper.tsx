@@ -1,5 +1,11 @@
 import npcClassMapper from "data/mappers/npcClassMapper";
-import { Alignment, DnDClass } from "data/model/dndModel";
+import {
+  Alignment,
+  ClassStat,
+  DnDClass,
+  RandomClassInfo,
+} from "data/model/dndModel";
+import { getRandomArrayElement } from "util/common.util";
 import inRange from "./helpers";
 
 // for each property of the returned object that is an array,
@@ -11,7 +17,7 @@ import inRange from "./helpers";
   adept.baseAttackBonus[2]
 */
 
-const getMappedClass = (nameOfData: DnDClass) => {
+const getMappedClass = (nameOfData: DnDClass): RandomClassInfo | ClassStat => {
   const mappedObject: Record<string, any> = { name: nameOfData };
   const mapper = npcClassMapper[nameOfData];
 
@@ -28,8 +34,17 @@ const getMappedClass = (nameOfData: DnDClass) => {
     });
     mappedObject[header].shift();
   });
-  console.log(mappedObject);
-  return mappedObject;
+
+  if (nameOfData !== "random") {
+    for (const attribute in mappedObject) {
+      // --- Transform into ClassStat
+      const curStat = mappedObject[attribute];
+      if (Array.isArray(curStat)) {
+        mappedObject[attribute] = parseFloat(getRandomArrayElement(curStat));
+      }
+    }
+  }
+  return mappedObject as RandomClassInfo | ClassStat;
 };
 
 const getClass = {
@@ -37,7 +52,7 @@ const getClass = {
   // score: 1 inclusive to 100 inclusive
   // returns a class given the alignment and score
   getClass: (alignment: Alignment, score: number): DnDClass => {
-    const classObject = getMappedClass("class");
+    const classObject = getMappedClass("random") as RandomClassInfo;
     let returnClass = "";
 
     classObject[alignment].forEach((element: any, i: number) => {

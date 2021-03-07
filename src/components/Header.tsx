@@ -1,6 +1,6 @@
 import React from "react";
-import { Nav, Navbar } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -11,7 +11,7 @@ export const Header = () => {
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-      <Navbar.Collapse id="basic-navbar-nav">
+      {/* <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} to="/generate">
             Generate
@@ -21,7 +21,7 @@ export const Header = () => {
             Edit
           </Nav.Link>
         </Nav>
-      </Navbar.Collapse>
+      </Navbar.Collapse> */}
     </Navbar>
   );
 };

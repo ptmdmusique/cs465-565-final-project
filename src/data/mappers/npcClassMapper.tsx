@@ -1,7 +1,7 @@
 import { DnDClass } from "data/model/dndModel";
 
 const npcClassMapper: Record<DnDClass, string> = {
-  class:
+  random:
     "good,neutral,evil,class." +
     "1-5,1-5,1-10,barbarian." +
     "6-10,6-10,11-15,bard." +
@@ -323,7 +323,7 @@ const npcClassMapper: Record<DnDClass, string> = {
     "18,65,22,9,13,7,9,12,42,7,8,16,13,10,12,25,6." +
     "19,68,22,9,13,7,9,12,44,7,8,16,13,10,12,25,6." +
     "20,72,22,10,14,7,9,13,46,7,8,16,13,10,12,26,6",
-    warlock:
+  warlock:
     "level,hp,ac,melee,ranged,fortSave,refSave,willSave,skillPoints,feats,str,dex,con,int,wis,cha,spellsPerDay." +
     "1,5,12,-1,3,1,2,3,8,1,8,14,13,10,12,15,5." +
     "2,8,12,0,4,1,2,4,10,1,8,14,13,10,12,15,6." +
