@@ -1,88 +1,125 @@
 import axios from "axios";
 import getClass from "data/helpers/classHelper";
-import { Collection } from '../../data/model/commonModels';
-import { alignmentList, DnDClass } from "data/model/dndModel";
-import { Race } from '../../data/model/raceModel';
-import { Class } from '../../data/model/classModel';
-import { action, Action, thunk, Thunk } from "easy-peasy";
+import traitMapper from "data/mappers/traitMapper";
+import {
+  Alignment,
+  alignmentList,
+  CharacterSheet,
+  ClassStat,
+  DnDClass,
+  Gender,
+} from "data/model/dndModel";
+import { action, Action, computed, Computed, thunk, Thunk } from "easy-peasy";
+import { StoreModel } from "stores/StoreFront";
+import { getRandomArrayElement, getRandomInt, shuffle } from "util/common.util";
+import { Class } from "../../data/model/classModel";
+import { Collection } from "../../data/model/commonModels";
+import { Race } from "../../data/model/raceModel";
+
+const getIndexFromCollection = (collection: Collection): string[] => {
+  return collection.results.map((entry) => entry.index);
+};
+
+const MAX_TRAIT = 10;
+const generatePersonalityTraits = () => {
+  const numToGenerate = getRandomInt(
+    Math.max(Math.min(traitMapper.length, MAX_TRAIT), 1)
+  );
+  return shuffle(traitMapper).slice(0, numToGenerate);
+};
 
 export interface APIModel {
-  classStat: Record<string, any> | null;
-  classes: Collection | null;
+  // * State
+  characterSheet: Computed<APIModel, CharacterSheet>;
+
+  alignment: Alignment;
+
+  classStat: ClassStat | null;
+  name: string;
+  gender: Gender;
+  personalityTraits: string[];
+
+  classes: string[];
+  races: string[];
+
   class: Class | null;
-  abilities:Collection | null;
-  races: Collection | null;
+  abilities: Collection | null;
   race: Race | null;
   allEquipment: Collection | null;
 
-  generateDndClass: Action<APIModel, DnDClass>;
-  generateClasses: Thunk<APIModel>;
-  generateClass: Thunk<APIModel, string>;
-  generateAbilities: Thunk<APIModel>;
-  generateRaces: Thunk<APIModel>;
-  generateRace: Thunk<APIModel, string>;
-  generateAllEquipment: Thunk<APIModel>;
+  // * Actions
+  generateClass: Action<APIModel, DnDClass>;
+  generatePersonalityTraits: Action<APIModel>;
 
-  setClasses: Action<APIModel, Collection>;
+  setName: Action<APIModel, string>;
+  setGender: Action<APIModel, Gender>;
+  setAlignment: Action<APIModel, Alignment | "random">;
+  setClasses: Action<APIModel, string[]>;
   setClass: Action<APIModel, Class>;
-  setAbilities: Action<APIModel,Collection>;
-  setRaces: Action<APIModel, Collection>;
+  setAbilities: Action<APIModel, Collection>;
+  setRaces: Action<APIModel, string[]>;
   setRace: Action<APIModel, Race>;
   setAllEquipment: Action<APIModel, Collection>;
+
+  // * Thunk
+  generate: Thunk<APIModel, { myClass?: DnDClass; race?: string }>;
+  initializeStore: Thunk<APIModel>;
+  // fetchAllClasses: Thunk<APIModel>;
+  fetchAllRaces: Thunk<APIModel>;
+
+  generatePeople: Thunk<APIModel>;
+  generateAbilities: Thunk<APIModel>;
+  generateRace: Thunk<APIModel, string, any, StoreModel>;
+  generateAllEquipment: Thunk<APIModel>;
 }
 
 export const api: APIModel = {
+  // * State
+  characterSheet: computed((state) => {
+    return {
+      name: state.name,
+      alignment: state.alignment,
+      gender: state.gender,
+
+      classStat: state.classStat,
+      personalTraits: state.personalityTraits,
+      race: state.race,
+    };
+  }),
+
+  name: "Who are you?",
+  alignment: "neutral",
+  gender: "male",
+  personalityTraits: [],
+
   classStat: null,
-  classes: null,
+  classes: [],
   class: null,
   abilities: null,
-  races: null,
+  races: [],
   race: null,
   allEquipment: null,
 
-  generateDndClass: action((state, className) => {
-    let classToGenerate = className;
-    if (className === "class") {
-      const randomScore = Math.floor(Math.random() * 100) + 1; // 1 to 100
+  // * Actions
+  setGender: action((state, genderText) => {
+    state.gender = genderText;
+  }),
 
-      const randomIndex = Math.floor(Math.random() * alignmentList.length);
-      const randomAlignment = alignmentList[randomIndex];
+  setName: action((state, name) => {
+    state.name = name;
+  }),
 
-      classToGenerate = getClass.getClass(randomAlignment, randomScore);
+  setAlignment: action((state, alignment) => {
+    let newAlignment: Alignment;
+    if (alignment === "random") {
+      newAlignment = getRandomArrayElement(
+        (alignmentList as any) as Alignment[]
+      );
+    } else {
+      newAlignment = state.alignment;
     }
 
-    state.classStat = getClass.generateDnDClass(classToGenerate);
-  }),
-
-  generateClasses: thunk(async (actions) => {
-    const { data } = await axios.get(dndAPISrc + "classes/");
-    actions.setClasses(data.results);
-  }),
-
-  // payload: string name of class
-  generateClass: thunk(async (actions, payload) => {
-    const { data } = await axios.get(dndAPISrc + "classes/" + payload + '/');
-    actions.setClass(data);
-  }),
-
-  generateAbilities: thunk(async (actions) => {
-    const { data } = await axios.get(dndAPISrc + "ability-scores/");
-    actions.setAbilities(data);
-  }),
-
-  generateRaces: thunk(async (actions) => {
-    const { data } = await axios.get(dndAPISrc + "races/");
-    actions.setRaces(data);
-  }),
-
-  generateRace: thunk(async (actions, payload) => {
-    const { data } = await axios.get(dndAPISrc + "races/" + payload + "/");
-    actions.setRace(data);
-  }),
-
-  generateAllEquipment: thunk(async (actions) => {
-    const { data } = await axios.get(dndAPISrc + "equipment/");
-    actions.setAllEquipment(data);
+    state.alignment = newAlignment;
   }),
 
   setClasses: action((state, dndClasses) => {
@@ -104,9 +141,90 @@ export const api: APIModel = {
   setRace: action((state, race) => {
     state.race = race;
   }),
-  
+
   setAllEquipment: action((state, equipment) => {
     state.allEquipment = equipment;
+  }),
+
+  // fetchAllClasses: thunk(async (actions) => {
+  //   const data = (await axios.get(dndAPISrc + "classes/")).data as Collection;
+  //   actions.setClasses(getIndexFromCollection(data));
+  // }),
+
+  // payload: string name of class
+  generateClass: action((state, className) => {
+    let classToGenerate = className;
+    if (className === "Random") {
+      const randomScore = Math.floor(Math.random() * 100) + 1; // 1 to 100
+
+      const randomIndex = Math.floor(Math.random() * alignmentList.length);
+      const randomAlignment = alignmentList[randomIndex];
+
+      classToGenerate = getClass.getClass(randomAlignment, randomScore);
+    }
+
+    state.classStat = getClass.generateDnDClass(classToGenerate) as ClassStat;
+  }),
+  generatePersonalityTraits: action((state) => {
+    state.personalityTraits = generatePersonalityTraits();
+  }),
+
+  // * Thunks
+  generate: thunk(async (actions, { myClass, race }) => {
+    await actions.fetchAllRaces();
+    actions.generateRace(race || "random"); // generate a random race trait
+    actions.generateClass(myClass || "Random"); // generate a random class trait
+    actions.generatePersonalityTraits();
+    await actions.generatePeople();
+  }),
+
+  initializeStore: thunk(async (actions) => {
+    actions.generate({});
+  }),
+
+  generateAbilities: thunk(async (actions) => {
+    const { data } = await axios.get(dndAPISrc + "ability-scores/");
+    actions.setAbilities(data);
+  }),
+
+  fetchAllRaces: thunk(async (actions) => {
+    const data = (await axios.get(dndAPISrc + "races/")).data as Collection;
+    actions.setRaces(getIndexFromCollection(data));
+  }),
+
+  generatePeople: thunk(async (actions) => {
+    interface RandomNameDto {
+      results: {
+        gender: "female" | "male";
+        name: { first: string; last: string };
+      }[];
+    }
+
+    const fetchResult = (await axios.get("https://randomuser.me/api/"))
+      .data as RandomNameDto;
+
+    const { gender, name } = fetchResult.results[0];
+
+    actions.setGender(gender);
+    actions.setName(`${name.first} ${name.last}`);
+  }),
+
+  generateRace: thunk(async (actions, payload, { getState }) => {
+    let raceToGenerate = payload;
+    if (payload === "random") {
+      raceToGenerate = getRandomArrayElement(getState().races);
+    }
+
+    const { data } = await axios.get(
+      dndAPISrc + "races/" + raceToGenerate + "/"
+    );
+
+    actions.setRace(data);
+  }),
+
+  generateAllEquipment: thunk(async (actions) => {
+    const { data } = await axios.get(dndAPISrc + "equipment/");
+    actions.setAllEquipment(data);
   }),
 };
 
