@@ -17,9 +17,14 @@ import inRange from "./helpers";
   adept.baseAttackBonus[2]
 */
 
-const getMappedClass = (nameOfData: DnDClass): RandomClassInfo | ClassStat => {
+const getMappedClass = (
+  nameOfData: DnDClass
+): RandomClassInfo | ClassStat | null => {
   const mappedObject: Record<string, any> = { name: nameOfData };
   const mapper = npcClassMapper[nameOfData];
+  if (!mapper) {
+    return null;
+  }
 
   const rows = mapper.split(".");
   const rowCol: string[][] = [];
