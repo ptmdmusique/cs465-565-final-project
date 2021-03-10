@@ -16,6 +16,12 @@ import { Class } from "../../data/model/classModel";
 import { Collection } from "../../data/model/commonModels";
 import { Race } from "../../data/model/raceModel";
 
+let backendRaceUrl =
+  "https://us-central1-cs465-565.cloudfunctions.net/fetchRaceData";
+if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+  backendRaceUrl = "http://localhost:5001/cs465-565/us-central1/fetchRaceData";
+}
+
 const getIndexFromCollection = (collection: Collection): string[] => {
   return collection.results.map((entry) => entry.index);
 };
@@ -68,9 +74,9 @@ export interface APIModel {
   fetchAllRaces: Thunk<APIModel>;
 
   generatePeople: Thunk<APIModel>;
-  generateAbilities: Thunk<APIModel>;
+  // generateAbilities: Thunk<APIModel>;
   generateRace: Thunk<APIModel, string, any, StoreModel>;
-  generateAllEquipment: Thunk<APIModel>;
+  // generateAllEquipment: Thunk<APIModel>;
 }
 
 export const api: APIModel = {
@@ -182,13 +188,15 @@ export const api: APIModel = {
     actions.generate({});
   }),
 
-  generateAbilities: thunk(async (actions) => {
-    const { data } = await axios.get(dndAPISrc + "ability-scores/");
-    actions.setAbilities(data);
-  }),
-
   fetchAllRaces: thunk(async (actions) => {
-    const data = (await axios.get(dndAPISrc + "races/")).data as Collection;
+    const data = (
+      await axios.post(
+        backendRaceUrl,
+        { data: {} },
+        { headers: { "Content-Type": "application/json" } }
+      )
+    ).data.result as Collection;
+
     actions.setRaces(getIndexFromCollection(data));
   }),
 
@@ -215,17 +223,21 @@ export const api: APIModel = {
       raceToGenerate = getRandomArrayElement(getState().races);
     }
 
-    const { data } = await axios.get(
-      dndAPISrc + "races/" + raceToGenerate + "/"
+    const { data } = await axios.post(
+      backendRaceUrl,
+      { data: { raceToGenerate } },
+      { headers: { "Content-Type": "application/json" } }
     );
 
-    actions.setRace(data);
+    actions.setRace(data.result);
   }),
 
-  generateAllEquipment: thunk(async (actions) => {
-    const { data } = await axios.get(dndAPISrc + "equipment/");
-    actions.setAllEquipment(data);
-  }),
+  // generateAllEquipment: thunk(async (actions) => {
+  //   const { data } = await axios.get(dndAPISrc + "equipment/");
+  //   actions.setAllEquipment(data);
+  // }),
+  // generateAbilities: thunk(async (actions) => {
+  //   const { data } = await axios.get(dndAPISrc + "ability-scores/");
+  //   actions.setAbilities(data);
+  // }),
 };
-
-const dndAPISrc = "https://www.dnd5eapi.co/api/";
