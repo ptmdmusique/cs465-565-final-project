@@ -24,7 +24,7 @@ export const HomePage = () => {
               "https://assets1.ignimgs.com/2019/07/31/dandd-br-1564600399165.jpg"
             }
             fluid
-            style={{ border: "4px solid red", borderRadius: "6px" }}
+            className={"landing-image"}
           />
         </Col>
       </Row>

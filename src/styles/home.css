@@ -1,9 +1,14 @@
 .create-character {
-    font-size: 26px; 
-    font-weight: bold;
-    color: black;
-};
+  font-size: 26px;
+  font-weight: bold;
+  color: black;
+}
 
 .create-character-button {
-    background-color: "red";
-};
+  background-color: "red";
+}
+
+.landing-image {
+  border: 4px solid red;
+  border-radius: 6px;
+}
