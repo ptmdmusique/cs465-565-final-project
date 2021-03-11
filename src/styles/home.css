@@ -1,0 +1,9 @@
+.create-character {
+    font-size: 26px; 
+    font-weight: bold;
+    color: black;
+};
+
+.create-character-button {
+    background-color: "red";
+};
