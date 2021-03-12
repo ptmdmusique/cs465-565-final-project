@@ -27,7 +27,7 @@ export const EditingPage = () => {
 
     <Form>
       <Form.Group controlId="exampleForm.ControlSelect1">
-        <Form.Label>Choose a character class to generate</Form.Label>
+        <Form.Label>Choose a character to edit</Form.Label>
         <Form.Control
           as="select"
           className="text-capitalize"
@@ -60,6 +60,24 @@ export const EditingPage = () => {
         ))}
       </ListGroup>
     )}
+
+
+  <Row>
+  <Col sm={3} className="my-2">
+      <Form>
+        <Card className="p-4">
+          <h5>NPC Generator</h5>
+          <a
+            type="button"
+            href={`/generate`}
+            className="mt-2"
+          >
+            Generate
+          </a>
+        </Card>
+      </Form>
+  </Col>
+  </Row>
   </Container>
   );
 };

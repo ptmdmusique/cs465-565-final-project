@@ -232,6 +232,14 @@ export const GeneratingPage = () => {
               >
                 Download
               </a>
+
+              <a
+                type="button"
+                href={`/edit`}
+                className="mt-2"
+              >
+                Edit
+              </a>
             </Card>
           </Form>
         </Col>
