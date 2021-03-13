@@ -70,7 +70,7 @@ const ClassTraitBox = () => {
 
   return (
     <>
-      <Col className="my-2">
+      <Col className="my-2 fluid" xs={12} md={12} lg={4}>
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">Ability Scores</h5>
 
@@ -84,7 +84,7 @@ const ClassTraitBox = () => {
         </Card>
       </Col>
 
-      <Col className="my-2">
+      <Col className="my-2 fluid" xs={12} md={12} lg={4}>
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">Save Stats</h5>
 
@@ -94,7 +94,7 @@ const ClassTraitBox = () => {
         </Card>
       </Col>
 
-      <Col className="my-2">
+      <Col className="my-2 fluid" xs={12} md={12} lg={4}>
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">Character Stats</h5>
 
@@ -127,7 +127,7 @@ const PersonalityTraitBox = () => {
 
   return (
     <>
-      <Col className="my-2">
+      <Col className="my-2" md={6}>
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">About Character</h5>
 
@@ -138,7 +138,7 @@ const PersonalityTraitBox = () => {
         </Card>
       </Col>
 
-      <Col className="my-2">
+      <Col className="my-2" md={6}>
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">Personality Trait</h5>
 
@@ -205,7 +205,7 @@ export const GeneratingPage = () => {
       <h4>Character Generation</h4>
 
       <Row>
-        <Col sm={3} className="my-2">
+        <Col lg={3} className="my-2">
           <Form onSubmit={onSubmit}>
             <Card className="p-4">
               <h5>NPC Generator</h5>
@@ -232,11 +232,7 @@ export const GeneratingPage = () => {
                 Download
               </a>
 
-              <a
-                type="button"
-                href={`/edit`}
-                className="mt-2"
-              >
+              <a type="button" href={`/edit`} className="mt-2">
                 Edit
               </a>
             </Card>
