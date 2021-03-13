@@ -40,7 +40,7 @@ const getMappedClass = (
     mappedObject[header].shift();
   });
 
-  if (nameOfData !== "Random") {
+  if (nameOfData !== "random") {
     for (const attribute in mappedObject) {
       // --- Transform into ClassStat
       const curStat = mappedObject[attribute];
@@ -57,7 +57,7 @@ const getClass = {
   // score: 1 inclusive to 100 inclusive
   // returns a class given the alignment and score
   getClass: (alignment: Alignment, score: number): DnDClass => {
-    const classObject = getMappedClass("Random") as RandomClassInfo;
+    const classObject = getMappedClass("random") as RandomClassInfo;
     let returnClass = "";
 
     classObject[alignment].forEach((element: any, i: number) => {
@@ -70,55 +70,55 @@ const getClass = {
     return returnClass as DnDClass;
   },
   /* getAdept: () => {
-    return getMappedClass("Adept");
+    return getMappedClass("adept");
   },
   getAristocrat: () => {
-    return getMappedClass("Aristocrat");
+    return getMappedClass("aristocrat");
   }, */
   getBarbarian: () => {
-    return getMappedClass("Barbarian");
+    return getMappedClass("barbarian");
   },
   getBard: () => {
-    return getMappedClass("Bard");
+    return getMappedClass("bard");
   },
   getCleric: () => {
-    return getMappedClass("Cleric");
+    return getMappedClass("cleric");
   },
   /* getCommoner: () => {
-    return getMappedClass("Commoner");
+    return getMappedClass("commoner");
   }, */
   getDruid: () => {
-    return getMappedClass("Druid");
+    return getMappedClass("druid");
   },
   /* getExpert: () => {
-    return getMappedClass("Expert");
+    return getMappedClass("expert");
   }, */
   getFighter: () => {
-    return getMappedClass("Fighter");
+    return getMappedClass("fighter");
   },
   getMonk: () => {
-    return getMappedClass("Monk");
+    return getMappedClass("monk");
   },
   getPaladin: () => {
-    return getMappedClass("Paladin");
+    return getMappedClass("paladin");
   },
   getRanger: () => {
-    return getMappedClass("Ranger");
+    return getMappedClass("ranger");
   },
   getRogue: () => {
-    return getMappedClass("Rogue");
+    return getMappedClass("rogue");
   },
   getSorcerer: () => {
-    return getMappedClass("Sorcerer");
+    return getMappedClass("sorcerer");
   },
   getWarlock: () => {
-    return getMappedClass("Warlock");
+    return getMappedClass("warlock");
   },
   /* getWarrior: () => {
-    return getMappedClass("Warrior");
+    return getMappedClass("warrior");
   }, */
   getWizard: () => {
-    return getMappedClass("Wizard");
+    return getMappedClass("wizard");
   },
   generateDnDClass: (className: DnDClass) => getMappedClass(className),
 };

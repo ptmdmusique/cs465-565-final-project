@@ -12,7 +12,6 @@ import {
   Switch,
 } from "react-router-dom";
 import "styles/App.css";
-import getClass from "data/helpers/classHelper";
 
 function App() {
   useEffect(() => {

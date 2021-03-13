@@ -1,4 +1,3 @@
-import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 
@@ -13,6 +12,10 @@ export const Header = () => {
 
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
+          <Nav.Link as={NavLink} to="/">
+            Home
+          </Nav.Link>
+
           <Nav.Link as={NavLink} to="/generate">
             Generate
           </Nav.Link>
