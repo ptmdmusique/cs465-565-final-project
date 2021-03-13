@@ -3,6 +3,7 @@ import { Header } from "components/Header";
 import firebase from "firebase/app";
 import { EditingPage } from "pages/EditingPage";
 import { GeneratingPage } from "pages/GeneratingPage";
+import { HomePage } from "pages/HomePage";
 import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -37,6 +38,10 @@ function App() {
         <Header />
 
         <Switch>
+        <Route path="/home">
+            <HomePage />
+          </Route>
+
           <Route path="/generate">
             <GeneratingPage />
           </Route>
@@ -46,7 +51,7 @@ function App() {
           </Route>
 
           <Route path="*">
-            <Redirect to="/generate" />
+            <Redirect to="/home" />
           </Route>
         </Switch>
       </Router>
