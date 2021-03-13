@@ -170,23 +170,33 @@ export const EditingPage = () => {
         <Col lg={3} className="my-2">
           <Form>
             <Card className="p-4">
-              <h5>Return to Generator Page</h5>
-              <Link to="/generate" className="mt-2">
-                Generate New Character
-              </Link>
+              <h5>Download</h5>
 
               <a
                 type="button"
                 href={`data:text/json;charset=utf-8,${encodeURIComponent(
                   JSON.stringify("temp")
                 )}`}
-                download="character_sheet.json"
+                download="character_sheet_old.json"
                 className="mt-2"
               >
-                Download
+                Download Old Character
+              </a>
+
+              <a
+                type="button"
+                href={`data:text/json;charset=utf-8,${encodeURIComponent(
+                  JSON.stringify("temp")
+                )}`}
+                download="character_sheet_new.json"
+                className="mt-2"
+              >
+                Download Edited Character
               </a>
             </Card>
           </Form>
+
+
         </Col>
 
         <Col>
