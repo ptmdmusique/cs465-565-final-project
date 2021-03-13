@@ -7,11 +7,10 @@ import {
 import React, { useEffect } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { useStoreActions, useStoreState } from "stores";
 
-const Text = (props: { children: any }) => (
-  <p className="text-left">{props.children}</p>
+const Text = (props: { children: any; className?: string }) => (
+  <p className={`text-left ${props.className}`}>{props.children}</p>
 );
 
 const RaceTraitBox = () => {
@@ -132,10 +131,10 @@ const PersonalityTraitBox = () => {
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">About Character</h5>
 
-          <Text>Class: {classStat?.name}</Text>
-          <Text>Name: {name}</Text>
-          <Text>Gender: {gender}</Text>
-          <Text>Alignment: {alignment}</Text>
+          <Text className="text-capitalize">Class: {classStat?.name}</Text>
+          <Text className="text-capitalize">Name: {name}</Text>
+          <Text className="text-capitalize">Gender: {gender}</Text>
+          <Text className="text-capitalize">Alignment: {alignment}</Text>
         </Card>
       </Col>
 
