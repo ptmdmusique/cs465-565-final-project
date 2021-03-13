@@ -1,11 +1,10 @@
 import { DnDClass } from "data/model/dndModel";
 import { Card, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
-import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useStoreState } from "stores";
 
-const Text = (props: { children: any }) => (
-  <p className="text-left">{props.children}</p>
+const Text = (props: { children: any; className?: string }) => (
+  <p className={`text-left ${props.className}`}>{props.children}</p>
 );
 
 const RaceTraitBox = () => {
@@ -65,7 +64,7 @@ const ClassTraitBox = () => {
 
   return (
     <>
-      <Col className="my-2">
+      <Col className="my-2 fluid" xs={12} md={12} lg={4}>
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">Ability Scores</h5>
 
@@ -79,7 +78,7 @@ const ClassTraitBox = () => {
         </Card>
       </Col>
 
-      <Col className="my-2">
+      <Col className="my-2 fluid" xs={12} md={12} lg={4}>
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">Save Stats</h5>
 
@@ -89,13 +88,12 @@ const ClassTraitBox = () => {
         </Card>
       </Col>
 
-      <Col className="my-2">
+      <Col className="my-2 fluid" xs={12} md={12} lg={4}>
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">Character Stats</h5>
 
           <Text>Level: {classStat.level}</Text>
           <Text>HP: {classStat.hp}</Text>
-          {/* <Text>Name: {classStat.}</Text> */}
           <Text>Feats: {classStat.feats}</Text>
           <Text>Skill Points: {classStat.skillPoints}</Text>
           <Text>Spells Per Day: {classStat.spellsPerDay}</Text>
@@ -122,18 +120,18 @@ const PersonalityTraitBox = () => {
 
   return (
     <>
-      <Col className="my-2">
+      <Col className="my-2" md={6}>
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">About Character</h5>
 
-          <Text>Class: {classStat?.name}</Text>
-          <Text>Name: {name}</Text>
-          <Text>Gender: {gender}</Text>
-          <Text>Alignment: {alignment}</Text>
+          <Text className="text-capitalize">Class: {classStat?.name}</Text>
+          <Text className="text-capitalize">Name: {name}</Text>
+          <Text className="text-capitalize">Gender: {gender}</Text>
+          <Text className="text-capitalize">Alignment: {alignment}</Text>
         </Card>
       </Col>
 
-      <Col className="my-2">
+      <Col className="my-2" md={6}>
         <Card className="p-4 h-100">
           <h5 className="text-capitalize">Personality Trait</h5>
 
@@ -151,18 +149,9 @@ interface FormField {
 }
 
 export const EditingPage = () => {
-  const { register, handleSubmit } = useForm<FormField>();
-
-  //const { editDndClass } = useStoreActions((actions) => actions.api);
   const classStat = useStoreState((state) => state.api.classStat);
 
-  //const editOnSubmit = handleSubmit((data) => {
-  //  editDndClass(data.classToEdit);
-  //});
-
   return (
-    //<div>Page to edit generated character</div>
-
     <Container className="mt-4">
       <h4>Character Editing (WIP)</h4>
 
@@ -178,7 +167,7 @@ export const EditingPage = () => {
       )}
 
       <Row>
-        <Col sm={3} className="my-2">
+        <Col lg={3} className="my-2">
           <Form>
             <Card className="p-4">
               <h5>Return to Generator Page</h5>

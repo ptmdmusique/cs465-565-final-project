@@ -101,7 +101,6 @@ const ClassTraitBox = () => {
 
           <Text>Level: {classStat.level}</Text>
           <Text>HP: {classStat.hp}</Text>
-          {/* <Text>Name: {classStat.}</Text> */}
           <Text>Feats: {classStat.feats}</Text>
           <Text>Skill Points: {classStat.skillPoints}</Text>
           <Text>Spells Per Day: {classStat.spellsPerDay}</Text>
