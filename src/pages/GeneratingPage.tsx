@@ -4,9 +4,10 @@ import {
   DnDClass,
   mapperClassList,
 } from "data/model/dndModel";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { useStoreActions, useStoreState } from "stores";
 
 const Text = (props: { children: any; className?: string }) => (
@@ -232,9 +233,9 @@ export const GeneratingPage = () => {
                 Download
               </a>
 
-              <a type="button" href={`/edit`} className="mt-2">
+              <Link to="/edit" className="mt-2">
                 Edit
-              </a>
+              </Link>
             </Card>
           </Form>
         </Col>

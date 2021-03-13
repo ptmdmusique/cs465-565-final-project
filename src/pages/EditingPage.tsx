@@ -1,6 +1,7 @@
 import { DnDClass } from "data/model/dndModel";
 import { Card, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { useStoreState } from "stores";
 
 const Text = (props: { children: any }) => (
@@ -163,7 +164,7 @@ export const EditingPage = () => {
     //<div>Page to edit generated character</div>
 
     <Container className="mt-4">
-      <h4>Character Editing</h4>
+      <h4>Character Editing (WIP)</h4>
 
       {classStat && (
         <ListGroup className="mt-4">
@@ -181,9 +182,9 @@ export const EditingPage = () => {
           <Form>
             <Card className="p-4">
               <h5>Return to Generator Page</h5>
-              <a type="button" href={`/generate`} className="mt-2">
+              <Link to="/generate" className="mt-2">
                 Generate New Character
-              </a>
+              </Link>
 
               <a
                 type="button"
