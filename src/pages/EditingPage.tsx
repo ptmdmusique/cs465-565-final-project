@@ -1,5 +1,5 @@
-import { DnDClass, mapperClassList } from "data/model/dndModel";
-import { Button, Card, Col, Container, Form, Row, ListGroup } from "react-bootstrap";
+import { DnDClass } from "data/model/dndModel";
+import { Card, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useStoreState } from "stores";
 
@@ -165,45 +165,41 @@ export const EditingPage = () => {
     <Container className="mt-4">
       <h4>Character Editing</h4>
 
-    {classStat && (
-      <ListGroup className="mt-4">
-        {Object.entries(classStat).map(([key, value], index) => (
-          <ListGroup.Item key={index}>
-            <span className="text-capitalize">{`${key}: `}</span>
-            <span>{JSON.stringify(value)}</span>
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
-    )}
+      {classStat && (
+        <ListGroup className="mt-4">
+          {Object.entries(classStat).map(([key, value], index) => (
+            <ListGroup.Item key={index}>
+              <span className="text-capitalize">{`${key}: `}</span>
+              <span>{JSON.stringify(value)}</span>
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      )}
 
-    <Row>
-      <Col sm={3} className="my-2">
-        <Form>
-          <Card className="p-4">
-            <h5>Return to Generator Page</h5>
-            <a
-              type="button"
-              href={`/generate`}
-              className="mt-2"
-            >
-              Generate New Character
-            </a>
+      <Row>
+        <Col sm={3} className="my-2">
+          <Form>
+            <Card className="p-4">
+              <h5>Return to Generator Page</h5>
+              <a type="button" href={`/generate`} className="mt-2">
+                Generate New Character
+              </a>
 
-            <a
+              <a
                 type="button"
                 href={`data:text/json;charset=utf-8,${encodeURIComponent(
-                  JSON.stringify('temp')
+                  JSON.stringify("temp")
                 )}`}
                 download="character_sheet.json"
                 className="mt-2"
               >
                 Download
               </a>
-          </Card>
-        </Form>
-      </Col>
+            </Card>
+          </Form>
+        </Col>
 
-      <Col>
+        <Col>
           <Row>
             <PersonalityTraitBox />
           </Row>
@@ -216,8 +212,7 @@ export const EditingPage = () => {
             <RaceTraitBox />
           </Row>
         </Col>
-    </Row>
-
+      </Row>
     </Container>
   );
 };
