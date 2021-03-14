@@ -166,7 +166,7 @@ export const EditingPage = () => {
 
   return (
     <Container className="mt-4">
-      <h4>Character Editing (WIP)</h4>
+      <h4>Character Editing</h4>
 
       <Row>
         <Col lg={4} className="my-21">
@@ -187,80 +187,93 @@ export const EditingPage = () => {
         
         <Col lg={8} className="my-24">
           <Form onSubmit={onSubmit}>
-            <Card>
-              <h5>Edit Character</h5>
-              
-              <div>              
+            <Card className="p-4">
+              <h5>Edit Character (functionality incomplete)</h5>
+              <span></span>
+              <div> 
                 <label>Class: </label>
+                <span>  </span>
                 <input name="class" type="class" id="class"></input>
               </div>
               <div> 
-                <label>Class: </label>
-                <input name="class" type="class" id="class"></input>
-              </div>
-              <div> 
-                <label>Level: </label>             
+                <label>Level: </label>    
+                <span>  </span>         
                 <input name="level" type="level" id="level"></input>
               </div>
               <div>  
                 <label>Hp: </label>
+                <span>  </span>
                 <input name="hp" type="hp" id="hp"></input>
               </div>
               <div>
                 <label>Ac: </label> 
+                <span>  </span>
                 <input name="ac" type="ac" id="ac"></input>
               </div>
               <div>
                 <label>Melee: </label> 
+                <span>  </span>
                 <input name="melee" type="melee" id="melee"></input>
               </div>
               <div> 
                 <label>Ranged: </label>
+                <span>  </span>
                 <input name="ranged" type="ranged" id="ranged"></input>
               </div>
               <div>
                 <label>Fortsave: </label>
+                <span>  </span>
                 <input name="fortsave" type="fortsave" id="fortsave"></input>
               </div>
               <div>  
-                <label>Hp: </label>
-                <input name="hp" type="hp" id="hp"></input>
+                <label>Willsave: </label>
+                <span>  </span>
+                <input name="willsave" type="willsave" id="willsave"></input>
               </div>
               <div>
-                <label>Ac: </label> 
-                <input name="ac" type="ac" id="ac"></input>
+                <label>Skillpoints: </label> 
+                <span>  </span>
+                <input name="skillpoints" type="skillpoints" id="skillpoints"></input>
               </div>
               <div>
-                <label>Melee: </label> 
-                <input name="melee" type="melee" id="melee"></input>
+                <label>Feats: </label> 
+                <span>  </span>
+                <input name="feats" type="feats" id="feats"></input>
               </div>
               <div> 
-                <label>Ranged: </label>
-                <input name="ranged" type="ranged" id="ranged"></input>
+                <label>Str: </label>
+                <span>  </span>
+                <input name="str" type="str" id="str"></input>
               </div>
-              <div>
-                <label>Fortsave: </label>
-                <input name="fortsave" type="fortsave" id="fortsave"></input>
+              <div> 
+                <label>Dex: </label>
+                <span>  </span>
+                <input name="dex" type="dex" id="dex"></input>
               </div>
               <div>  
-                <label>Hp: </label>
-                <input name="hp" type="hp" id="hp"></input>
+                <label>con: </label>
+                <span>  </span>
+                <input name="con" type="con" id="con"></input>
               </div>
-              <div>
-                <label>Ac: </label> 
-                <input name="ac" type="ac" id="ac"></input>
+              <div>  
+                <label>int: </label>
+                <span>  </span>
+                <input name="int" type="int" id="int"></input>
               </div>
-              <div>
-                <label>Melee: </label> 
-                <input name="melee" type="melee" id="melee"></input>
+              <div>  
+                <label>wis: </label>
+                <span>  </span>
+                <input name="wis" type="wis" id="wis"></input>
               </div>
-              <div> 
-                <label>Ranged: </label>
-                <input name="ranged" type="ranged" id="ranged"></input>
+              <div>  
+                <label>cha: </label>
+                <span>  </span>
+                <input name="cha" type="cha" id="cha"></input>
               </div>
-              <div>
-                <label>Fortsave: </label>
-                <input name="fortsave" type="fortsave" id="fortsave"></input>
+              <div>  
+                <label>SpellsPerDay: </label>
+                <span>  </span>
+                <input name="spells" type="spells" id="spells"></input>
               </div>
 
               <Button variant="secondary" type="submit">
