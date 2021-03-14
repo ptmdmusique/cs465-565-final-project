@@ -157,8 +157,8 @@ export const EditingPage = () => {
       <h4>Character Editing (WIP)</h4>
 
       <Row>
-        <Col lg={6} className="my-2">
-      {classStat && (
+        <Col lg={4} className="my-21">
+        {classStat && (
           <ListGroup className="mt-4">
             {Object.entries(classStat).map(([key, value], index) => (
               <ListGroup.Item key={index}>
@@ -170,16 +170,29 @@ export const EditingPage = () => {
         )}
         </Col>
         
-        <Col lg={6} className="my-2">
-           <Form>
-
-           </Form>
+        <Col lg={8} className="my-24">
+          <Form>
+            {classStat && (
+              <ListGroup className="mt-4">
+                {Object.entries(classStat).map(([key, value], index) => (
+                  <ListGroup.Item key={index}>
+                    <span className="text-capitalize">{`${key}: `}</span>
+                    <span>{JSON.stringify(value)}</span>
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
+            )}
+          </Form>
         </Col>
       </Row>
 
+      <span>
+        <p> </p>
+      </span>
+
       <Row>
-        <Col lg={3} className="my-2">
-          <Row lg={6}>
+        <Col lg={3} md={6} className="my-2">
+          <Row>
           <Form>
             <Card className="p-4">
               <h5>Download</h5>

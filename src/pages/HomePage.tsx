@@ -11,7 +11,7 @@ export const HomePage = () => {
         <Col sm={4} className="my-2">
           <div style={{ backgroundColor: "red", borderRadius: "5px" }}>
             <Nav.Link as={NavLink} to="/generate">
-              <span className={"create-character"}>Create Character</span>
+              <span className={"create-character"}>Create Your Own DnD Character</span>
             </Nav.Link>
           </div>
         </Col>
