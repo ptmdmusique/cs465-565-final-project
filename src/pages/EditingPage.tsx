@@ -186,19 +186,82 @@ export const EditingPage = () => {
         </Col>
         
         <Col lg={8} className="my-24">
-          <Form>
+          <Form onSubmit={onSubmit}>
             <Card>
               <h5>Edit Character</h5>
-              {classStat && (
-                <ListGroup className="mt-4">
-                  {Object.entries(classStat).map(([key, value], index) => (
-                    <ListGroup.Item key={index}>
-                      <span className="text-capitalize">{`${key}: `}</span>
-                      <span>{JSON.stringify(value)}</span>
-                    </ListGroup.Item>
-                  ))}
-                </ListGroup>
-              )}
+              
+              <div>              
+                <label>Class: </label>
+                <input name="class" type="class" id="class"></input>
+              </div>
+              <div> 
+                <label>Class: </label>
+                <input name="class" type="class" id="class"></input>
+              </div>
+              <div> 
+                <label>Level: </label>             
+                <input name="level" type="level" id="level"></input>
+              </div>
+              <div>  
+                <label>Hp: </label>
+                <input name="hp" type="hp" id="hp"></input>
+              </div>
+              <div>
+                <label>Ac: </label> 
+                <input name="ac" type="ac" id="ac"></input>
+              </div>
+              <div>
+                <label>Melee: </label> 
+                <input name="melee" type="melee" id="melee"></input>
+              </div>
+              <div> 
+                <label>Ranged: </label>
+                <input name="ranged" type="ranged" id="ranged"></input>
+              </div>
+              <div>
+                <label>Fortsave: </label>
+                <input name="fortsave" type="fortsave" id="fortsave"></input>
+              </div>
+              <div>  
+                <label>Hp: </label>
+                <input name="hp" type="hp" id="hp"></input>
+              </div>
+              <div>
+                <label>Ac: </label> 
+                <input name="ac" type="ac" id="ac"></input>
+              </div>
+              <div>
+                <label>Melee: </label> 
+                <input name="melee" type="melee" id="melee"></input>
+              </div>
+              <div> 
+                <label>Ranged: </label>
+                <input name="ranged" type="ranged" id="ranged"></input>
+              </div>
+              <div>
+                <label>Fortsave: </label>
+                <input name="fortsave" type="fortsave" id="fortsave"></input>
+              </div>
+              <div>  
+                <label>Hp: </label>
+                <input name="hp" type="hp" id="hp"></input>
+              </div>
+              <div>
+                <label>Ac: </label> 
+                <input name="ac" type="ac" id="ac"></input>
+              </div>
+              <div>
+                <label>Melee: </label> 
+                <input name="melee" type="melee" id="melee"></input>
+              </div>
+              <div> 
+                <label>Ranged: </label>
+                <input name="ranged" type="ranged" id="ranged"></input>
+              </div>
+              <div>
+                <label>Fortsave: </label>
+                <input name="fortsave" type="fortsave" id="fortsave"></input>
+              </div>
 
               <Button variant="secondary" type="submit">
                 Submit Changes
