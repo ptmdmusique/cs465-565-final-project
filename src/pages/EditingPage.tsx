@@ -1,4 +1,4 @@
-import { DnDClass } from "data/model/dndModel";
+import { Alignment, DnDClass } from "data/model/dndModel";
 import { Card, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useStoreState } from "stores";
@@ -146,6 +146,8 @@ const PersonalityTraitBox = () => {
 
 interface FormField {
   classToEdit: DnDClass;
+  race: string;
+  alignment: Alignment;
 }
 
 export const EditingPage = () => {

@@ -23,6 +23,10 @@ export const Header = () => {
           <Nav.Link as={NavLink} to="/edit">
             Edit
           </Nav.Link>
+
+          <Nav.Link as={NavLink} to="/feedback">
+            Feedback
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -4,6 +4,7 @@ import firebase from "firebase/app";
 import { EditingPage } from "pages/EditingPage";
 import { GeneratingPage } from "pages/GeneratingPage";
 import { HomePage } from "pages/HomePage";
+import { FeedbackPage } from "pages/FeedbackPage";
 import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -48,6 +49,10 @@ function App() {
 
           <Route path="/edit">
             <EditingPage />
+          </Route>
+
+          <Route path="/feedback">
+            <FeedbackPage />
           </Route>
 
           <Route path="*">
