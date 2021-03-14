@@ -1,4 +1,5 @@
 import { Nav, Button, Card, Col, Container, Form, Image, Row } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "../styles/feedback.css";
 
@@ -23,7 +24,9 @@ export const FeedbackPage = () => {
         <Col sm={4} className="my-2" />
         <Col sm={4} className="my-2">
           <div style={{ backgroundColor: '#90EE90', borderRadius: "5px" }}>
+            <Nav.Link as={NavLink} to="/feedback">
               <span className={"feedback"}>Feedback</span>
+            </Nav.Link>
           </div>
         </Col>
         <Col sm={4} className="my-2" />
