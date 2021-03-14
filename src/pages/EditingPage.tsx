@@ -150,24 +150,36 @@ interface FormField {
 
 export const EditingPage = () => {
   const classStat = useStoreState((state) => state.api.classStat);
+  const characterSheet0 = useStoreState((state) => state.api.characterSheet);
 
   return (
     <Container className="mt-4">
       <h4>Character Editing (WIP)</h4>
 
+      <Row>
+        <Col lg={6} className="my-2">
       {classStat && (
-        <ListGroup className="mt-4">
-          {Object.entries(classStat).map(([key, value], index) => (
-            <ListGroup.Item key={index}>
-              <span className="text-capitalize">{`${key}: `}</span>
-              <span>{JSON.stringify(value)}</span>
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      )}
+          <ListGroup className="mt-4">
+            {Object.entries(classStat).map(([key, value], index) => (
+              <ListGroup.Item key={index}>
+                <span className="text-capitalize">{`${key}: `}</span>
+                <span>{JSON.stringify(value)}</span>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        )}
+        </Col>
+        
+        <Col lg={6} className="my-2">
+           <Form>
+
+           </Form>
+        </Col>
+      </Row>
 
       <Row>
         <Col lg={3} className="my-2">
+          <Row lg={6}>
           <Form>
             <Card className="p-4">
               <h5>Download</h5>
@@ -175,7 +187,7 @@ export const EditingPage = () => {
               <a
                 type="button"
                 href={`data:text/json;charset=utf-8,${encodeURIComponent(
-                  JSON.stringify("temp")
+                  JSON.stringify(characterSheet0)
                 )}`}
                 download="character_sheet_old.json"
                 className="mt-2"
@@ -195,11 +207,12 @@ export const EditingPage = () => {
               </a>
             </Card>
           </Form>
-
-
+          </Row>
         </Col>
 
         <Col>
+          <Card>
+            <h4> Edited Character </h4>
           <Row>
             <PersonalityTraitBox />
           </Row>
@@ -211,6 +224,7 @@ export const EditingPage = () => {
           <Row>
             <RaceTraitBox />
           </Row>
+          </Card>
         </Col>
       </Row>
     </Container>
