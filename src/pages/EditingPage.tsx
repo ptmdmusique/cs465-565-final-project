@@ -1,6 +1,7 @@
 import { Alignment, DnDClass } from "data/model/dndModel";
-import { Card, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { useStoreState } from "stores";
 
 const Text = (props: { children: any; className?: string }) => (
@@ -151,6 +152,15 @@ interface FormField {
 }
 
 export const EditingPage = () => {
+
+  const { register, handleSubmit } = useForm<FormField>();
+
+  const onSubmit = handleSubmit((data) => {
+    //console.log(comment);
+  });
+
+
+
   const classStat = useStoreState((state) => state.api.classStat);
   const characterSheet0 = useStoreState((state) => state.api.characterSheet);
 
@@ -160,30 +170,41 @@ export const EditingPage = () => {
 
       <Row>
         <Col lg={4} className="my-21">
-        {classStat && (
-          <ListGroup className="mt-4">
-            {Object.entries(classStat).map(([key, value], index) => (
-              <ListGroup.Item key={index}>
-                <span className="text-capitalize">{`${key}: `}</span>
-                <span>{JSON.stringify(value)}</span>
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        )}
+          <Card>
+            <h5>Old Character</h5>
+            {classStat && (
+            <ListGroup className="mt-4">
+              {Object.entries(classStat).map(([key, value], index) => (
+                <ListGroup.Item key={index}>
+                  <span className="text-capitalize">{`${key}: `}</span>
+                  <span>{JSON.stringify(value)}</span>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+            )}
+          </Card>
         </Col>
         
         <Col lg={8} className="my-24">
           <Form>
-            {classStat && (
-              <ListGroup className="mt-4">
-                {Object.entries(classStat).map(([key, value], index) => (
-                  <ListGroup.Item key={index}>
-                    <span className="text-capitalize">{`${key}: `}</span>
-                    <span>{JSON.stringify(value)}</span>
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            )}
+            <Card>
+              <h5>Edit Character</h5>
+              {classStat && (
+                <ListGroup className="mt-4">
+                  {Object.entries(classStat).map(([key, value], index) => (
+                    <ListGroup.Item key={index}>
+                      <span className="text-capitalize">{`${key}: `}</span>
+                      <span>{JSON.stringify(value)}</span>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              )}
+
+              <Button variant="secondary" type="submit">
+                Submit Changes
+              </Button>
+
+            </Card>
           </Form>
         </Col>
       </Row>
@@ -195,7 +216,7 @@ export const EditingPage = () => {
       <Row>
         <Col lg={3} md={6} className="my-2">
           <Row>
-          <Form>
+          <Form onSubmit={onSubmit}>
             <Card className="p-4">
               <h5>Download</h5>
 
@@ -226,7 +247,7 @@ export const EditingPage = () => {
         </Col>
 
         <Col>
-          <Card>
+          <Card className="edited">
             <h4> Edited Character </h4>
           <Row>
             <PersonalityTraitBox />

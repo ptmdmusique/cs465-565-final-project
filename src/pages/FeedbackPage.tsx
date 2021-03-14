@@ -17,27 +17,45 @@ export const FeedbackPage = () => {
   });
 
 
-
   return (
     <Container className="mt-4">
       <Row>
         <Col sm={4} className="my-2" />
         <Col sm={4} className="my-2">
-          <div style={{ backgroundColor: "green", borderRadius: "5px" }}>
+          <div style={{ backgroundColor: '#90EE90', borderRadius: "5px" }}>
               <span className={"feedback"}>Feedback</span>
           </div>
         </Col>
         <Col sm={4} className="my-2" />
       </Row>
 
-    <Row>
-        <Card className="feed-4">
-          <Form onSubmit={onSubmit}>
-            <h4>Submit feedback/comments here</h4>
-          </Form>
+      <Row>
+        <Col sm={3} className="my-2" />
+        <Col sm={6} className="my-2">
+        <Form onSubmit={onSubmit}>
+          <Card className="feed-4">
+            <p> </p>
+            <label>Submit feedback/comments here: </label>
+            <div>
+              <input name="comment" type="comment" id="comment"></input>
+            </div>
+            <p> </p>
 
-        </Card>
-    </Row>
+            <Button variant="primary" type="submit">
+                Submit
+            </Button>
+
+          </Card>
+        </Form>
+        </Col>
+        <Col sm={3} className="my-2" />
+      </Row>
+
+      <span>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+      </span>
 
       <Row>
         <Col sm={12} className="my-2">
